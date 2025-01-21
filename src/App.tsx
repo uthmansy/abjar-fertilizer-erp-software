@@ -62,29 +62,34 @@ function App() {
         token: {
           // colorPrimary: "#fa8c16",
           // colorPrimary: "#55YY44",
-          colorPrimary: "#ABC32F",
+          colorPrimary: "#425c59",
           colorInfo: "#fa8c16",
-          borderRadius: 0,
+          borderRadius: 6,
         },
         components: {
           Layout: {
-            siderBg: darkMode ? "#222222" : "#ffffff",
+            siderBg: darkMode ? "#425c59" : "#425c59",
           },
 
           Table: {
-            borderColor: darkMode ? "#ABC32F" : "#ABC32F",
-            headerBg: "#ABC32F",
+            // borderColor: darkMode ? "#425c59" : "#425c59",
+            // headerBg: "#cd9b34",
+            colorBgBase: "rgba(255,255,255,0.0)",
+            borderRadius: 0,
           },
           Menu: {
             /* here is your component tokens */
-            itemBg: "#ffffff",
-            darkItemBg: "#222222",
+            itemBg: "#425c59",
+            darkItemBg: "#425c59",
+            iconMarginInlineEnd: 20,
+            colorText: "rgba(255,255,255,0.6)",
           },
         },
       }}
     >
       <AntApp>
         <AppWrapper />
+        {/* <div>hello app</div> */}
       </AntApp>
     </ConfigProvider>
   );

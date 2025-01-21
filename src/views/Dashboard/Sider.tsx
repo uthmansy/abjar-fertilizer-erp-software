@@ -1,9 +1,13 @@
-import { Button, Layout, Menu } from "antd";
+import { Button, Menu } from "antd";
 import useDashboard from "../../hooks/useDashboard";
 import { sidebarMenuMapping } from "../../constants/MAPPINGS";
 import { Link } from "react-router-dom";
 import useAuthStore from "../../store/auth";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import {
+  LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
 import useAdminMenu from "../../store/adminMenu";
 import useDarkMode from "../../store/theme";
 import { LOGO } from "../../assets/images";
@@ -12,12 +16,11 @@ function Sider() {
   const {
     collapsed,
     handleCollapse,
-    isDesktop,
     isMobile,
     isLoading,
+    handleSignOut,
     handleMenuClick,
   } = useDashboard();
-  const { Sider } = Layout;
   const { userProfile } = useAuthStore();
   const { currentMenu } = useAdminMenu();
   const menu =
@@ -27,13 +30,10 @@ function Sider() {
   const { darkMode } = useDarkMode();
 
   return (
-    <Sider
-      collapsedWidth={isDesktop ? 100 : 0}
-      trigger={null}
-      collapsible
-      collapsed={collapsed}
-      style={{ zIndex: 100, position: isMobile ? "absolute" : "relative" }}
-      width={250}
+    <div
+      className={`bg-primary w-72 h-screen flex flex-col justify-between transition-all duration-300 ${
+        isMobile ? `fixed ${collapsed ? "-left-72" : "-left-0"}` : "relative"
+      } z-10`}
     >
       <Button
         size="large"
@@ -47,33 +47,44 @@ function Sider() {
           width: 56,
           height: 56,
           zIndex: 100,
+          display: isMobile ? "block" : "none",
         }}
       />
-      <div
-        className={`${
-          collapsed ? "px-2 h-[5rem]" : "px-10 h-[10rem]"
-        } w-full overflow-hidden flex items-center transition-all duration-[600]`}
-      >
-        <img src={LOGO} className="w-full h-auto" alt="" />
+      <div>
+        <div
+          className={`h-24 w-full overflow-hidden flex items-center px-5 py-3 transition-all duration-[600] bg-primaryDark mb-10`}
+        >
+          <img src={LOGO} className="w-auto h-full" alt="" />
+        </div>
+        <Menu
+          onClick={handleMenuClick}
+          theme={darkMode ? "dark" : "light"}
+          mode="inline"
+          defaultSelectedKeys={["1"]}
+          className={`h-[50vh] min-h-96 overflow-y-hidden`}
+        >
+          {sidebarMenuMapping[menu || "DEFAULT"].map((menu, index) => (
+            <Menu.Item key={index + 1} icon={<menu.icon color="#cd9b34" />}>
+              <Link to={menu.path} className="">
+                {menu.label}
+              </Link>
+            </Menu.Item>
+          ))}
+        </Menu>
       </div>
-      <Menu
-        onClick={handleMenuClick}
-        theme={darkMode ? "dark" : "light"}
-        mode="inline"
-        defaultSelectedKeys={["1"]}
-        className={`${
-          collapsed ? "max-h-[calc(100vh-7rem)]" : "max-h-[calc(100vh-10rem)]"
-        } overflow-y-auto`}
-      >
-        {sidebarMenuMapping[menu || "DEFAULT"].map((menu, index) => (
-          <Menu.Item key={index + 1} icon={<menu.icon color="#ABC32F" />}>
-            <Link to={menu.path} className="uppercase font-semibold">
-              {menu.label}
-            </Link>
-          </Menu.Item>
-        ))}
-      </Menu>
-    </Sider>
+
+      <div>
+        <button
+          className="w-full flex space-x-3 text-primary font-semibold items-center justify-center h-16 bg-secondary uppercase"
+          onClick={handleSignOut}
+        >
+          <span>Logout</span>
+          <span className="text-xl">
+            <LogoutOutlined />
+          </span>
+        </button>
+      </div>
+    </div>
   );
 }
 

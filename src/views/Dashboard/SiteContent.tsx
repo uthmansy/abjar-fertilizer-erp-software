@@ -24,7 +24,6 @@ import Payrolls from "../../components/pages/payrolls/index.tsx";
 import Expenses from "../../components/pages/expenses/index.tsx";
 import Enrollment from "../../components/pages/enrollment/index.tsx";
 import UserManagement from "../../components/pages/userManagement/index.tsx";
-import { LOGO } from "../../assets/images/index.ts";
 import ScanWaybill from "../../components/pages/scanWaybill/index.tsx";
 import FinancialReports from "../../components/pages/financialReports/index.tsx";
 import StockIn from "../../components/pages/stockIn/index.tsx";
@@ -32,33 +31,19 @@ import DailyProduction from "../../components/pages/dailyProduction/index.tsx";
 import Invoices from "../../components/pages/invoices/index.tsx";
 import FinishedProducts from "../../components/pages/finishedProducts/index.tsx";
 
-const { Content } = Layout;
-
 function SiteContent() {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Content
-      className="m-5 mx-0 md:mx-5 p-5 md:p-10 overflow-y-auto"
+    <div
+      className="m-5 mx-0 md:mx-5 p-5 md:p-10 overflow-y-auto relative flex-1"
       style={{
         minHeight: 280,
         background: colorBgContainer,
         borderRadius: borderRadiusLG,
       }}
     >
-      {/* Background Image Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${LOGO})`,
-          backgroundSize: "75%", // Adjust the size as needed
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          opacity: 0.08, // Faint effect
-        }}
-      ></div>
       <div className="relative">
         <Routes>
           <Route path={`${ROUTES.home}/*`} element={<Home />} />
@@ -135,7 +120,7 @@ function SiteContent() {
           />
         </Routes>
       </div>
-    </Content>
+    </div>
   );
 }
 
