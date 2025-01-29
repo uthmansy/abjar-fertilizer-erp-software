@@ -13,9 +13,15 @@ import {
   TfiWidgetized,
 } from "react-icons/tfi";
 import TabLabel from "../../TabLabel";
-import { VscEmptyWindow, VscFileSymlinkFile, VscFiles } from "react-icons/vsc";
+import {
+  VscEmptyWindow,
+  VscFileSymlinkFile,
+  VscFiles,
+  VscSettingsGear,
+} from "react-icons/vsc";
 import Receivables from "./Receivables";
 import { HomeOutlined } from "@ant-design/icons";
+import Accounts from "../invoices/Accounts";
 
 function FinancialReports() {
   const { isLoading, isRefetching, reports, csvHeaders } =
@@ -63,6 +69,11 @@ function FinancialReports() {
       key: "7",
       label: <TabLabel Icon={VscFiles} label="Payrolls" />,
       children: <Payrolls />,
+    },
+    {
+      key: "8",
+      label: <TabLabel Icon={VscSettingsGear} label="Payment Accounts" />,
+      children: <Accounts />,
     },
   ];
 

@@ -49,7 +49,7 @@ const menuItems = {
   },
   payrolls: { label: "Payrolls", icon: HiBanknotes, path: ROUTES.payroll },
   financialReports: {
-    label: "Financial Reports",
+    label: "Accounting",
     icon: HiChartPie,
     path: ROUTES.financialReports,
   },
@@ -132,6 +132,21 @@ const menuItems = {
     icon: HiClipboardDocumentList,
     path: ROUTES.productionRuns,
   },
+  production: {
+    label: "Production",
+    icon: HiClipboardDocumentList,
+    path: ROUTES.production,
+  },
+  inventory: {
+    label: "Inventory",
+    icon: HiClipboardDocumentList,
+    path: ROUTES.inventory,
+  },
+  users: {
+    label: "Users",
+    icon: HiUsers,
+    path: ROUTES.users,
+  },
   finishedProducts: {
     label: "Finished Products",
     icon: HiArchiveBox,
@@ -156,6 +171,21 @@ const menuItems = {
     label: "Invoices",
     icon: HiCreditCard,
     path: ROUTES.invoices,
+  },
+  logistics: {
+    label: "Logistics",
+    icon: HiMiniTruck,
+    path: ROUTES.logistics,
+  },
+  company: {
+    label: "Company",
+    icon: HiMiniHomeModern,
+    path: ROUTES.company,
+  },
+  hr: {
+    label: "HR",
+    icon: HiUsers,
+    path: ROUTES.hr,
   },
 };
 
@@ -189,37 +219,26 @@ const {
   stockIn,
   dailyProduction,
   invoices,
+  production,
+  inventory,
+  users,
+  logistics,
+  company,
+  hr,
 } = menuItems;
 
 export const superAdminMenuItems: SidebarMenuItem[] = [
   dashboard,
-  warehouses,
-  departments,
-  positions,
-  payrolls,
+  company,
+  hr,
   financialReports,
-  invoices,
-  userManagement,
-  enrollment,
-  stockRecords,
-  stockIn,
-  externalStockRecords,
-  inventoryItems,
-  inventoryTransfers,
+  users,
   purchases,
   sales,
-  externalDispatch,
-  internalDispatch,
-  transit,
-  scanWaybill,
-  receivedTrucks,
-  dispatchedTrucks,
-  requests,
-  productionRuns,
-  finishedProducts,
-  productSubmissions,
+  logistics,
+  production,
+  inventory,
   dailyProduction,
-  employees,
 ];
 
 export const adminMenuItems: SidebarMenuItem[] = [
@@ -244,6 +263,8 @@ export const adminMenuItems: SidebarMenuItem[] = [
   scanWaybill,
   receivedTrucks,
   dispatchedTrucks,
+  production,
+  inventory,
   productionRuns,
   finishedProducts,
   dailyProduction,
@@ -252,11 +273,8 @@ export const adminMenuItems: SidebarMenuItem[] = [
 
 export const productionMenuItems: SidebarMenuItem[] = [
   dashboard,
+  production,
   stockRecords,
-  requests,
-  productionRuns,
-  finishedProducts,
-  productSubmissions,
   dailyProduction,
 ];
 export const inventoryMenuItems: SidebarMenuItem[] = [
@@ -307,6 +325,7 @@ export const managerMenuItems: SidebarMenuItem[] = [
   transit,
   receivedTrucks,
   dispatchedTrucks,
+  production,
   requests,
   productionRuns,
   productSubmissions,

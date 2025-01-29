@@ -50,32 +50,30 @@ function Sider() {
           display: isMobile ? "block" : "none",
         }}
       />
-      <div>
-        <div
-          className={`h-24 w-full overflow-hidden flex items-center px-5 py-3 transition-all duration-[600] bg-primaryDark mb-10`}
-        >
-          <img src={LOGO} className="w-auto h-full" alt="" />
-        </div>
-        <Menu
-          onClick={handleMenuClick}
-          theme={darkMode ? "dark" : "light"}
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          className={`h-[50vh] min-h-96 overflow-y-hidden`}
-        >
-          {sidebarMenuMapping[menu || "DEFAULT"].map((menu, index) => (
-            <Menu.Item key={index + 1} icon={<menu.icon color="#cd9b34" />}>
-              <Link to={menu.path} className="">
-                {menu.label}
-              </Link>
-            </Menu.Item>
-          ))}
-        </Menu>
+      <div
+        className={`h-24 w-full overflow-hidden flex items-center px-5 py-3 transition-all duration-[600] bg-primary mb-10`}
+      >
+        <img src={LOGO} className="w-auto h-full" alt="" />
       </div>
+      <Menu
+        onClick={handleMenuClick}
+        theme={darkMode ? "dark" : "light"}
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        className={`flex-1 overflow-y-auto sider-menu`}
+      >
+        {sidebarMenuMapping[menu || "DEFAULT"].map((menu, index) => (
+          <Menu.Item key={index + 1} icon={<menu.icon />}>
+            <Link to={menu.path} className="uppercase">
+              {menu.label}
+            </Link>
+          </Menu.Item>
+        ))}
+      </Menu>
 
       <div>
         <button
-          className="w-full flex space-x-3 text-primary font-semibold items-center justify-center h-16 bg-secondary uppercase"
+          className="w-full flex space-x-3 text-primary font-semibold items-center justify-center h-16 bg-primaryDark uppercase"
           onClick={handleSignOut}
         >
           <span>Logout</span>

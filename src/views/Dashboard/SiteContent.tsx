@@ -1,4 +1,4 @@
-import { Layout, theme } from "antd";
+import { theme } from "antd";
 import { Route, Routes } from "react-router-dom";
 import ROUTES from "../../constants/ROUTES";
 import Warehouses from "../../components/pages/warehouses";
@@ -30,23 +30,38 @@ import StockIn from "../../components/pages/stockIn/index.tsx";
 import DailyProduction from "../../components/pages/dailyProduction/index.tsx";
 import Invoices from "../../components/pages/invoices/index.tsx";
 import FinishedProducts from "../../components/pages/finishedProducts/index.tsx";
+import Production from "../../components/pages/production/index.tsx";
+import Inventory from "../../components/pages/inventory/index.tsx";
+import Users from "../../components/pages/users/index.tsx";
+import Logistics from "../../components/pages/logistics/index.tsx";
+import Company from "../../components/pages/company/index.tsx";
+import Hr from "../../components/pages/hr/index.tsx";
+import useDarkMode from "../../store/theme.tsx";
 
 function SiteContent() {
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { borderRadiusLG },
   } = theme.useToken();
+  const { darkMode } = useDarkMode();
   return (
     <div
-      className="m-5 mx-0 md:mx-5 p-5 md:p-10 overflow-y-auto relative flex-1"
+      className={`m-5 mx-0 md:mx-5 p-5 md:p-10 overflow-y-auto relative flex-1 ${
+        darkMode ? "bg-neutral-900" : "bg-primaryLight"
+      }`}
       style={{
         minHeight: 280,
-        background: colorBgContainer,
         borderRadius: borderRadiusLG,
       }}
     >
       <div className="relative">
         <Routes>
           <Route path={`${ROUTES.home}/*`} element={<Home />} />
+          <Route path={`${ROUTES.production}/*`} element={<Production />} />
+          <Route path={`${ROUTES.inventory}/*`} element={<Inventory />} />
+          <Route path={`${ROUTES.users}/*`} element={<Users />} />
+          <Route path={`${ROUTES.logistics}/*`} element={<Logistics />} />
+          <Route path={`${ROUTES.company}/*`} element={<Company />} />
+          <Route path={`${ROUTES.hr}/*`} element={<Hr />} />
           <Route path={`${ROUTES.warehouses}/*`} element={<Warehouses />} />
           <Route
             path={`${ROUTES.inventoryItems}/*`}

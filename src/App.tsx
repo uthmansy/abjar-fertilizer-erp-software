@@ -62,25 +62,25 @@ function App() {
         token: {
           // colorPrimary: "#fa8c16",
           // colorPrimary: "#55YY44",
-          colorPrimary: "#425c59",
+          colorPrimary: "#aaa26e",
           colorInfo: "#fa8c16",
           borderRadius: 6,
         },
         components: {
           Layout: {
-            siderBg: darkMode ? "#425c59" : "#425c59",
+            siderBg: darkMode ? "#aaa26e" : "#aaa26e",
           },
 
           Table: {
-            // borderColor: darkMode ? "#425c59" : "#425c59",
+            // borderColor: darkMode ? "#aaa26e" : "#aaa26e",
             // headerBg: "#cd9b34",
             colorBgBase: "rgba(255,255,255,0.0)",
             borderRadius: 0,
           },
           Menu: {
             /* here is your component tokens */
-            itemBg: "#425c59",
-            darkItemBg: "#425c59",
+            itemBg: "#aaa26e",
+            darkItemBg: "#aaa26e",
             iconMarginInlineEnd: 20,
             colorText: "rgba(255,255,255,0.6)",
           },

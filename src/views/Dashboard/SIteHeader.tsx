@@ -1,4 +1,4 @@
-import { Avatar, Badge, Dropdown, Select, Space, theme } from "antd";
+import { Avatar, Badge, Dropdown, Select, Space } from "antd";
 import useDashboard from "../../hooks/useDashboard";
 import useDarkMode from "../../store/theme";
 import { MdSunny } from "react-icons/md";
@@ -19,9 +19,6 @@ function SiteHeader() {
   const { setMenu, currentMenu } = useAdminMenu();
   const { userProfile } = useAuthStore();
   const navigate = useNavigate();
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   const menuOptions: SelectOption[] = USER_ROLE.map((role) => ({
     label: role,
@@ -29,10 +26,7 @@ function SiteHeader() {
   }));
 
   return (
-    <div
-      className="h-24 flex justify-between items-center px-5 md:px-10"
-      style={{ background: colorBgContainer }}
-    >
+    <div className="h-24 flex justify-between items-center px-5 md:px-10">
       <div>
         {isDesktop && (
           <Space>
@@ -40,8 +34,9 @@ function SiteHeader() {
               (userProfile?.role === "ADMIN" ||
                 userProfile?.role === "SUPER ADMIN") && (
                 <Select
+                  placeholder="Select Account Type"
                   defaultValue={currentMenu}
-                  style={{ width: 100, borderRadius: "50%" }}
+                  style={{ width: 200, borderRadius: "50%" }}
                   onChange={(value) => {
                     setMenu(value as UserRole | null);
                     navigate("/");

@@ -138,79 +138,22 @@ function DailyProduction() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <h2 className="mb-5 uppercase">Morning Shift</h2>
-          <div
-            className={`mb-5 p-5 md:p-10 ${
-              darkMode ? "bg-black" : "bg-gray-200"
-            }`}
-          >
-            <div className="grid lg:grid-cols-2 gap-3">
+          <div className={`mb-5 p-5 ${darkMode ? "bg-black" : "bg-bg"}`}>
+            <div className="grid lg:grid-cols-1 gap-5">
               <Card
-                title="Bale Quantity"
+                title="Quantity"
                 bordered={true}
+                className="rounded-none"
                 style={{ width: "100%" }}
               >
                 <Statistic
-                  title="Quantity Produced in Bale"
-                  value={
-                    totalBaleQuantityProducedMorning
-                      ? formatNumber(totalBaleQuantityProducedMorning)
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">bales</span>}
-                />
-              </Card>
-              <Card
-                title="Pieces Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Pieces"
-                  value={
-                    allProductsPiecesQuantityMorning
-                      ? formatNumber(
-                          allProductsPiecesQuantityMorning.reduce(
-                            (sum, fp) => sum + (fp.pieces || 0),
-                            0
-                          )
-                        )
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
-                />
-              </Card>
-              <Card
-                title="Metre Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Metre"
+                  title="Quantity Produced"
                   value={
                     totalQuantityProducedMorning
                       ? formatNumber(totalQuantityProducedMorning)
                       : "0"
                   }
-                  suffix={<span className="text-sm uppercase">Metre</span>}
-                />
-              </Card>
-              <Card
-                title="Reject Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Accumulated Rejects in pieces"
-                  value={
-                    finishedProducts
-                      ?.filter((fp) => fp.shift === "morning")
-                      .reduce(
-                        (sum, finishedProduct) =>
-                          sum + (finishedProduct.waste || 0),
-                        0
-                      ) || 0
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
+                  suffix={<span className="text-sm uppercase">Bags</span>}
                 />
               </Card>
             </div>
@@ -227,79 +170,22 @@ function DailyProduction() {
         </div>
         <div>
           <h2 className="mb-5 uppercase">Night Shift</h2>
-          <div
-            className={`mb-5 p-5 md:p-10 ${
-              darkMode ? "bg-black" : "bg-gray-200"
-            }`}
-          >
-            <div className="grid lg:grid-cols-2 gap-3">
+          <div className={`mb-5 p-5 ${darkMode ? "bg-black" : "bg-bg"}`}>
+            <div className="grid lg:grid-cols-1 gap-5">
               <Card
-                title="Bale Quantity"
+                title="Quantity"
                 bordered={true}
+                className="rounded-none"
                 style={{ width: "100%" }}
               >
                 <Statistic
-                  title="Quantity Produced in Bale"
-                  value={
-                    totalBaleQuantityProducedNight
-                      ? formatNumber(totalBaleQuantityProducedNight)
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">bales</span>}
-                />
-              </Card>
-              <Card
-                title="Pieces Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Pieces"
-                  value={
-                    allProductsPiecesQuantityNight
-                      ? formatNumber(
-                          allProductsPiecesQuantityNight.reduce(
-                            (sum, fp) => sum + (fp.pieces || 0),
-                            0
-                          )
-                        )
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
-                />
-              </Card>
-              <Card
-                title="Metre Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Metre"
+                  title="Quantity Produced"
                   value={
                     totalQuantityProducedNight
                       ? formatNumber(totalQuantityProducedNight)
                       : "0"
                   }
-                  suffix={<span className="text-sm uppercase">Metre</span>}
-                />
-              </Card>
-              <Card
-                title="Reject Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Accumulated Rejects in pieces"
-                  value={
-                    finishedProducts
-                      ?.filter((fp) => fp.shift === "night")
-                      .reduce(
-                        (sum, finishedProduct) =>
-                          sum + (finishedProduct.waste || 0),
-                        0
-                      ) || 0
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
+                  suffix={<span className="text-sm uppercase">Bags</span>}
                 />
               </Card>
             </div>
@@ -316,77 +202,22 @@ function DailyProduction() {
         </div>
         <div>
           <h2 className="mb-5 uppercase">Summary For the Whole Day</h2>
-          <div
-            className={`mb-5 p-5 md:p-10 ${
-              darkMode ? "bg-black" : "bg-gray-200"
-            }`}
-          >
-            <div className="grid lg:grid-cols-2 gap-3">
+          <div className={`mb-5 p-5 ${darkMode ? "bg-black" : "bg-bg"}`}>
+            <div className="grid lg:grid-cols-1 gap-5">
               <Card
-                title="Bale Quantity"
+                title="Quantity"
                 bordered={true}
+                className="rounded-none"
                 style={{ width: "100%" }}
               >
                 <Statistic
-                  title="Quantity Produced in Bale"
-                  value={
-                    totalBaleQuantityProduced
-                      ? formatNumber(totalBaleQuantityProduced)
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">bales</span>}
-                />
-              </Card>
-              <Card
-                title="Pieces Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Pieces"
-                  value={
-                    allProductsPiecesQuantity
-                      ? formatNumber(
-                          allProductsPiecesQuantity.reduce(
-                            (sum, fp) => sum + (fp.pieces || 0),
-                            0
-                          )
-                        )
-                      : "0"
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
-                />
-              </Card>
-              <Card
-                title="Metre Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Quantity Produced in Metre"
+                  title="Quantity Produced"
                   value={
                     totalQuantityProduced
                       ? formatNumber(totalQuantityProduced)
                       : "0"
                   }
-                  suffix={<span className="text-sm uppercase">Metre</span>}
-                />
-              </Card>
-              <Card
-                title="Reject Quantity"
-                bordered={true}
-                style={{ width: "100%" }}
-              >
-                <Statistic
-                  title="Accumulated Rejects in pieces"
-                  value={
-                    finishedProducts?.reduce(
-                      (sum, finishedProduct) =>
-                        sum + (finishedProduct.waste || 0),
-                      0
-                    ) || 0
-                  }
-                  suffix={<span className="text-sm uppercase">Pieces</span>}
+                  suffix={<span className="text-sm uppercase">Bags</span>}
                 />
               </Card>
             </div>
